@@ -1,0 +1,123 @@
+{
+	"ABI version": 2,
+	"version": "2.2",
+	"header": ["time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "OfferExchange",
+			"inputs": [
+				{"name":"NFTSend","type":"address"},
+				{"name":"figur","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "AgreeExchange",
+			"inputs": [
+				{"name":"NFTreceive","type":"address"},
+				{"name":"NFTSend","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ConfirmExchange",
+			"inputs": [
+				{"name":"NFTreceive","type":"address"},
+				{"name":"NFTSend","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "IsNFTOwner",
+			"inputs": [
+				{"name":"Owner","type":"address"},
+				{"name":"NFT","type":"address"}
+			],
+			"outputs": [
+				{"name":"value0","type":"bool"}
+			]
+		},
+		{
+			"name": "NFTToOwner",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"NFTToOwner","type":"map(address,address)"}
+			]
+		},
+		{
+			"name": "NFTToFigure",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"NFTToFigure","type":"map(address,uint8)"}
+			]
+		},
+		{
+			"name": "Exchange",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"Exchange","type":"map(address,address)"}
+			]
+		},
+		{
+			"name": "Confirm",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"Confirm","type":"map(address,address)"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+		{
+			"name": "newNFT",
+			"inputs": [
+				{"name":"NFTSend","type":"address"},
+				{"name":"figur","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "changeNFT",
+			"inputs": [
+				{"name":"NFTreceive","type":"address"},
+				{"name":"NFTsend","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ConfirmChange",
+			"inputs": [
+				{"name":"NFTreceive","type":"address"},
+				{"name":"NFTSend","type":"address"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"NFTToOwner","type":"map(address,address)"},
+		{"name":"NFTToFigure","type":"map(address,uint8)"},
+		{"name":"Exchange","type":"map(address,address)"},
+		{"name":"Confirm","type":"map(address,address)"}
+	]
+}

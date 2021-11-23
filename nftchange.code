@@ -1,0 +1,624 @@
+.version sol 0.51.0
+
+.macro constructor
+DROP
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7_with_init_storage$
+}
+GETGLOB 6
+THROWIF 51
+ENDS
+.loc nftchange.sol, 12
+GETGLOB 2
+THROWIFNOT 101
+.loc nftchange.sol, 13
+GETGLOB 5
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	PUSHINT 0
+}
+IF
+GETGLOB 2
+EQUAL
+THROWIFNOT 102
+.loc nftchange.sol, 14
+ACCEPT
+.loc nftchange.sol, 0
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.macro OfferExchange
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc nftchange.sol, 26
+LDMSGADDRQ
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+LDUQ 8
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+	LDU 8
+}
+IFNOT
+ENDS
+.loc nftchange.sol, 0
+CALLREF {
+	CALL $OfferExchange_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.globl	OfferExchange_internal
+.type	OfferExchange_internal, @function
+CALL $OfferExchange_internal_macro$
+
+.macro OfferExchange_internal_macro
+.loc nftchange.sol, 27
+GETGLOB 9
+PUSH S2
+CALLREF {
+	CALL $IsNFTOwner_internal_macro$
+}
+THROWIFNOT 100
+.loc nftchange.sol, 28
+OVER
+GETGLOB 9
+GETGLOB 10
+PUSHINT 267
+DICTSET
+SETGLOB 10
+.loc nftchange.sol, 29
+OVER
+GETGLOB 11
+PUSH S2
+NEWC
+STU 8
+ROTREV
+PUSHINT 267
+DICTSETB
+SETGLOB 11
+.loc nftchange.sol, 30
+SWAP
+PUSHSLICE xc00000000000000000000000005ab8b31b
+NEWC
+STSLICE
+STSLICE
+STU 8
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc nftchange.sol, 0
+
+.macro AgreeExchange
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc nftchange.sol, 33
+LDMSGADDRQ
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+LDMSGADDRQ
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+ENDS
+.loc nftchange.sol, 0
+CALLREF {
+	CALL $AgreeExchange_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.globl	AgreeExchange_internal
+.type	AgreeExchange_internal, @function
+CALL $AgreeExchange_internal_macro$
+
+.macro AgreeExchange_internal_macro
+.loc nftchange.sol, 34
+GETGLOB 9
+OVER
+CALLREF {
+	CALL $IsNFTOwner_internal_macro$
+}
+THROWIFNOT 100
+.loc nftchange.sol, 35
+PUSH2 S0, S1
+GETGLOB 12
+PUSHINT 267
+DICTSET
+SETGLOB 12
+.loc nftchange.sol, 36
+SWAP
+PUSHSLICE xc0000000000000000000000001
+NEWC
+STSLICE
+ROTREV
+NEWC
+STSLICECONST x07cb539e
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc nftchange.sol, 0
+
+.macro ConfirmExchange
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc nftchange.sol, 39
+LDMSGADDRQ
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+LDMSGADDRQ
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+ENDS
+.loc nftchange.sol, 0
+CALLREF {
+	CALL $ConfirmExchange_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.globl	ConfirmExchange_internal
+.type	ConfirmExchange_internal, @function
+CALL $ConfirmExchange_internal_macro$
+
+.macro ConfirmExchange_internal_macro
+.loc nftchange.sol, 40
+GETGLOB 9
+OVER
+CALLREF {
+	CALL $IsNFTOwner_internal_macro$
+}
+THROWIFNOT 100
+.loc nftchange.sol, 41
+PUSH2 S0, S1
+GETGLOB 13
+PUSHINT 267
+DICTSET
+SETGLOB 13
+.loc nftchange.sol, 42
+SWAP
+PUSHSLICE xc0000000000000000000000001
+NEWC
+STSLICE
+ROTREV
+NEWC
+STSLICECONST x4ba6e73d
+STSLICE
+SWAP
+NEWC
+STSLICE
+STBREFR
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+.loc nftchange.sol, 0
+
+.macro IsNFTOwner
+DROP
+GETGLOB 6
+THROWIFNOT 76
+GETGLOB 2
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+.loc nftchange.sol, 45
+LDMSGADDRQ
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+LDMSGADDRQ
+PUSHCONT {
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+ENDS
+.loc nftchange.sol, 0
+CALLREF {
+	CALL $IsNFTOwner_internal_macro$
+}
+OVER
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHSLICE x000000000000000000000000391d78872_
+	STSLICER
+	STI 1
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+PUSHCONT {
+	DROP
+}
+IFELSE
+IFREF {
+	CALL $c7_to_c4$
+}
+THROW 0
+
+.globl	IsNFTOwner_internal
+.type	IsNFTOwner_internal, @function
+CALL $IsNFTOwner_internal_macro$
+
+.macro IsNFTOwner_internal_macro
+.loc nftchange.sol, 47
+DROP2
+TRUE
+.loc nftchange.sol, 0
+
+.macro c7_to_c4
+GETGLOB 13
+GETGLOB 12
+GETGLOB 11
+GETGLOB 10
+GETGLOB 3
+GETGLOB 2
+NEWC
+STU 256
+STU 64
+STONE
+STDICT
+STDICT
+STDICT
+SWAP
+NEWC
+STDICT
+STBREFR
+ENDC
+POPROOT
+
+.macro c4_to_c7
+PUSHROOT
+CTOS
+LDU 256 ; pubkey c4
+LDU 64 ; pubkey timestamp c4
+LDU 1 ; ctor flag
+NIP
+LDDICT
+LDDICT
+LDDICT
+LDREF
+ENDS
+CTOS
+LDDICT
+ENDS
+SETGLOB 13
+SETGLOB 12
+SETGLOB 11
+SETGLOB 10
+SETGLOB 3
+SETGLOB 2
+
+.macro c4_to_c7_with_init_storage
+PUSHROOT
+CTOS
+SBITS
+GTINT 1
+PUSHREFCONT {
+	CALL $c4_to_c7$
+}
+PUSHCONT {
+	PUSHINT 0
+	PUSHROOT
+	CTOS
+	PLDDICT ; D
+	NEWDICT
+	SETGLOB 10
+	NEWDICT
+	SETGLOB 11
+	NEWDICT
+	SETGLOB 12
+	NEWDICT
+	SETGLOB 13
+	PUSHINT 64
+	DICTUGET
+	THROWIFNOT 61
+	PLDU 256
+	SETGLOB 2
+	PUSHINT 0 ; timestamp
+	SETGLOB 3
+}
+IFELSE
+
+.internal-alias :main_internal, 0
+.internal :main_internal
+PUSHROOT
+CTOS
+SBITS
+NEQINT 1
+SETGLOB 6
+PUSH S2
+CTOS
+LDU 4 ; bounced tail
+LDMSGADDR ; bounced src tail
+DROP
+SETGLOB 9
+MODPOW2 1
+IFRET
+OVER
+SEMPTY ; isEmpty
+IFJMPREF {
+	GETGLOB 6
+	THROWIFNOT 76
+}
+OVER
+LDUQ 32  ; [funcId] body' ok
+THROWIFNOT 60 ; funcId body'
+OVER
+IFNOTJMPREF {
+	GETGLOB 6
+	THROWIFNOT 76
+}
+SWAP
+CALLREF {
+	CALL $public_function_selector$
+}
+THROW 60
+
+.internal-alias :main_external, -1
+.internal :main_external
+PUSHROOT
+CTOS
+SBITS
+NEQINT 1
+SETGLOB 6
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+SETGLOB 9
+OVER
+CALLREF {
+	CALL $c4_to_c7_with_init_storage$
+}
+LDU 1 ; haveSign msgSlice
+SWAP
+PUSHCONT {
+	PUSHINT 512
+	LDSLICEX ; signatureSlice msgSlice
+	DUP
+	HASHSU ; signatureSlice msgSlice hashMsgSlice
+	ROT
+	GETGLOB 2
+	DUP
+	SETGLOB 5
+	CHKSIGNU ; msgSlice isSigned
+	THROWIFNOT 40 ; msgSlice
+}
+IF
+LDU 64 ; timestamp msgSlice
+SWAP
+CALL $replay_protection_macro$
+LDU 32 ; expireAt msgSlice
+SWAP
+NOW ; msgSlice expireAt now
+GREATER ; msgSlice expireAt>now
+THROWIFNOT 57
+LDU 32 ; funcId body
+SWAP
+CALLREF {
+	CALL $public_function_selector$
+}
+THROW 60
+
+.macro NFTToOwner
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 10
+OVER
+PUSHCONT {
+	PUSHSLICE xc0000000000000000000000000b412950a
+	NEWC
+	STSLICE
+	STDICT
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.macro NFTToFigure
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 11
+OVER
+PUSHCONT {
+	PUSHSLICE xc00000000000000000000000009354e84a
+	NEWC
+	STSLICE
+	STDICT
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.macro Exchange
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 12
+OVER
+PUSHCONT {
+	PUSHSLICE xc00000000000000000000000009d543359
+	NEWC
+	STSLICE
+	STDICT
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.macro Confirm
+DROP
+ENDS
+CALLREF {
+	CALL $c4_to_c7$
+}
+GETGLOB 13
+OVER
+PUSHCONT {
+	PUSHSLICE xc0000000000000000000000000c8cdda55
+	NEWC
+	STSLICE
+	STDICT
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+IF
+THROW 0
+
+.macro public_function_selector
+DUP
+PUSHINT 1221450325
+LEQ
+IFJMPREF {
+	DUP
+	PUSHINT 324331594
+	EQUAL
+	IFJMPREF {
+		CALL $NFTToFigure$
+	}
+	DUP
+	PUSHINT 492057433
+	EQUAL
+	IFJMPREF {
+		CALL $Exchange$
+	}
+	DUP
+	PUSHINT 873633034
+	EQUAL
+	IFJMPREF {
+		CALL $NFTToOwner$
+	}
+	DUP
+	PUSHINT 1221450325
+	EQUAL
+	IFJMPREF {
+		CALL $Confirm$
+	}
+}
+DUP
+PUSHINT 1985740336
+LEQ
+IFJMPREF {
+	DUP
+	PUSHINT 1685447196
+	EQUAL
+	IFJMPREF {
+		CALL $IsNFTOwner$
+	}
+	DUP
+	PUSHINT 1756716863
+	EQUAL
+	IFJMPREF {
+		CALL $constructor$
+	}
+	DUP
+	PUSHINT 1923032963
+	EQUAL
+	IFJMPREF {
+		CALL $ConfirmExchange$
+	}
+	DUP
+	PUSHINT 1985740336
+	EQUAL
+	IFJMPREF {
+		CALL $OfferExchange$
+	}
+}
+DUP
+PUSHINT 2050584384
+EQUAL
+IFJMPREF {
+	CALL $AgreeExchange$
+}
+
