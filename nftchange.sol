@@ -38,12 +38,22 @@ contract nftchange {
     //  Оба участника подтверждашт обмен
     function ConfirmExchange (address NFTreceive, address NFTSend) public {
         require(IsNFTOwner(msg.sender, NFTSend));
+        if (Confirm[NFTSend]){
+            ChangeOwner(NFTreceive, NFTSend);
+        } else {
         Confirm[NFTreceive] = NFTSend;
+        }
         emit ConfirmChange(NFTreceive, NFTSend);
     }
 
     function IsNFTOwner(address Owner, address NFT) public view returns(bool) {
          // Тут добавим проверку обладания НФТшкой, если проходит то шлём true
+         return(true);
+    }
+
+
+    function ChangeOwner(address NFTreceive, address NFTSend) public view returns(bool) {
+         // Тут меняемся НФТшками
          return(true);
     }
 
