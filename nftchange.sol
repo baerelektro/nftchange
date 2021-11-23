@@ -46,6 +46,10 @@ contract nftchange {
         emit ConfirmChange(NFTreceive, NFTSend);
     }
 
+    // Описание TrueNFT https://github.com/tonlabs/True-NFT/blob/a6755f1db8021fb6c9a574ddf3b3b7956b79b235/share/surfer/README.md
+    // Нужны интерфейсы
+
+
     function IsNFTOwner(address Owner, address NFT) public view returns(bool) {
          // Тут добавим проверку обладания НФТшкой, если проходит то шлём true
          return(true);
