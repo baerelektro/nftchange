@@ -1,5 +1,7 @@
-pragma ton-solidity >= 0.35.0;
+pragma ton-solidity >= 0.43.0;
 pragma AbiHeader expire;
+
+import "interfaces/IData.sol";
 
 
 contract nftchange {
@@ -38,7 +40,7 @@ contract nftchange {
     //  Оба участника подтверждашт обмен
     function ConfirmExchange (address NFTreceive, address NFTSend) public {
         require(IsNFTOwner(msg.sender, NFTSend));
-        if (Confirm[NFTSend]){
+        if (Confirm[NFTSend] == NFTreceive){
             ChangeOwner(NFTreceive, NFTSend);
         } else {
         Confirm[NFTreceive] = NFTSend;
@@ -51,14 +53,21 @@ contract nftchange {
 
 
     function IsNFTOwner(address Owner, address NFT) public view returns(bool) {
-         // Тут добавим проверку обладания НФТшкой, если проходит то шлём true
-         return(true);
+        // Тут добавим проверку обладания НФТшкой, если проходит то шлём true
+        address NFTOwner = IData(NFT).getOwner();
+        require(NFTOwner == Owner);
+        return(true);
     }
 
 
     function ChangeOwner(address NFTreceive, address NFTSend) public view returns(bool) {
-         // Тут меняемся НФТшками
-         return(true);
+        // Тут меняемся НФТшками
+            // Modifier that allows public function to be called only by message signed with owner's pubkey.
+        tvm.accept();
+        IData(NFTreceive).transferOwnership(NFTSend);
+        IData(NFTSend).transferOwnership(NFTreceive);
+        return(true);
     }
+
 
 }
